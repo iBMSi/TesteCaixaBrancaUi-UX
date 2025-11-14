@@ -99,8 +99,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 // Importa as classes
 
-public class User {  
-------------------// Declaração da classe User
+public class User {
+
+      // Declaração da classe User
     Connection conectarBD(){
         // Método para conectar ao banco de dados
         Connection conn = null;  
