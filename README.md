@@ -90,3 +90,67 @@ A partir do grafo, foram identificados os caminhos independentes abaixo:
 
 ## 7. Estrutura Recomendada do Repositório
 
+package login; 
+// Define o pacote onde essa classe está localizada
+
+import java.sql.Connection;     
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+// Importa as classes
+
+public class User {  
+------------------// Declaração da classe User
+    Connection conectarBD(){
+        // Método para conectar ao banco de dados
+        Connection conn = null;  
+        // Cria a variável de conexão iniciando como null
+        try{
+            Class.forName("com.mysql.Driver.Manager.").newInstance();
+            // Carrega o driver do MySQL (OBS: está incorreto; o nome certo seria com.mysql.jdbc.Driver)
+            String url = "jdbc:mysql://127.0.0.1/test?user=lopes&password=123";
+            // URL de conexão com banco MySQL: IP local, banco test, usuário lopes e senha 123
+            conn = DriverManager.getConnection(url);
+            // Estabelece a conexão com o banco usando a URL acima
+        }catch (Exception e) { }
+        // Captura qualquer erro de conexão (mas não mostra nada)
+        return conn;
+        // Retorna a conexão aberta
+    }
+    public String nome="";
+    // Variável pública para armazenar o nome do usuário encontrado
+    public boolean result = false;
+    // Variável pública indicando se a verificação foi bem-sucedida
+    public boolean verificarUsuario(String login, String senha){
+        // Método que verifica se o login e senha existem no banco
+        String sql = "";
+        // Variável para montar a query SQL
+        Connection conn = conectarBD();
+        // Abre a conexão chamando o método conectarBD()
+        //INSTRUÇÃO SQL
+        sql += "select nome from usuarios ";
+        // Seleciona apenas a coluna 'nome'
+        sql += " where login = " + "'" + login + "'";
+        // Adiciona condição onde o login é igual ao informado
+        sql += " and senha = " + "'" + senha + "'";
+        // Adiciona condição onde a senha é igual à informada
+        try{
+            Statement st = conn.createStatement();
+            // Cria um Statement para enviar a SQL ao banco
+            ResultSet rs = st.executeQuery(sql);
+            // Executa a SQL no banco e guarda o resultado
+            if(rs.next()){
+                // Se existir uma linha retornada, o usuário está correto
+                result = true;
+                // Define resultado como verdadeiro
+                nome = rs.getString("nome");
+                // Armazena o nome retornado pelo banco na variável nome
+            }
+        }catch (Exception e) { }
+        // Captura qualquer erro na execução da SQL (mas não mostra nada)
+        return result;
+        // Retorna se o login/senha existem (true ou false)
+    }
+}
+
+
