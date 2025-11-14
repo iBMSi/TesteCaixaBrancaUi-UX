@@ -5,43 +5,37 @@ A atividade inclui documentação, grafo de fluxo, complexidade ciclomática, ca
 
 ---
 
-## 📌 1. Descrição do Código Analisado
+## 1. Código Analisado e Respondido
 
-O código analisado pertence à classe `User`, no pacote `login`.  
-Ele possui duas funções principais:
+## O código foi devidamente documentado? 
 
-- **conectarBD()** → tenta abrir uma conexão com o banco MySQL  
-- **verificarUsuario(login, senha)** → monta SQL, cria Statement, executa query e retorna se o usuário existe  
+Não, o programa mostra uma série de linhas de código em Java, porém não está documentado, isto é, alguém sem conhecimento do programa e da linguagem não consegue entender o que o código está fazendo pois não há comentários dizendo o que o código está fazendo em partes. Algumas partes estão comentadas instruindo o que esta acontecendo, porém nem todo código está documentado dificultando o entendimento do código todo
 
-Principais problemas levantados na análise:
+## As variáveis e constantes possuem nomenclatura?
 
-- Falta de documentação adequada  
-- Conexão com BD não foi estabelecida corretamente (driver incorreto)  
-- Conexões não são fechadas  
-- NullPointers não tratados  
-- SQL vulnerável a injeção  
-- Catches vazios  
-- Arquitetura incorreta (acesso ao BD deveria estar em um DAO)
+Sim, as variáveis e constantes presentes no código possuem nomenclatura. Em Java ao criar as variáveis é necessário as nomear, sendo assim quando tais variáveis foram declaradas foram atribuídas nomenclaturas.
 
----
+## Existem legibilidade e organização no código?
 
-## 📌 2. Notação do Grafo de Fluxo
+Sim o código está organizado 	em bibliotecas, classes variáveis e métodos assim como a linguagem Java necessita, sendo assim ao ter ciência dos comandos utilizados no código é possível analisa-lo de forma legível 
 
-A notação do grafo utilizada para cálculo da complexidade ciclomática foi definida com os seguintes nós:
+## Todos os NullPointers foram tratados?
 
-- **A** – Entrada do método verificarUsuario  
-- **B** – Chamada conectarBD()  
-- **C** – Montagem da SQL  
-- **D** – createStatement()  
-- **F** – executeQuery() / ResultSet  
-- **E** – Catch vazio  
-- **G** – Retorno final  
+Não, há um tratamento em um Try, porém o catch não realiza uma ação de tratamento como impedir ou corrigir, ele apenas informa a “Exception e”
 
-> **A imagem do grafo você adiciona no repositório**, conforme instruído.
+##As conexões utilizadas foram fechadas?
+
+Após feito uma análise do código é possível perceber que as conexões com o banco de dados não foram estabelecidas sendo assim, as conexões não foram fechadas.
+
+
+## 2. Notação do Grafo de Fluxo
+
+<img width="871" height="881" alt="image" src="https://github.com/user-attachments/assets/e9f2f4ce-cbbb-4faf-99a7-c76a60d2db64" />
+
 
 ---
 
-## 📌 3. Complexidade Ciclomática
+## 3. Complexidade Ciclomática
 
 Para o grafo fornecido, identificou-se:
 
@@ -65,7 +59,7 @@ Isto significa que existem **3 caminhos minimamente independentes** dentro do fl
 
 ---
 
-## 📌 4. Caminhos Básicos
+## 4. Caminhos Básicos
 
 A partir do grafo, foram identificados os caminhos independentes abaixo:
 
@@ -82,27 +76,17 @@ A partir do grafo, foram identificados os caminhos independentes abaixo:
 
 ---
 
-## 📌 5. Tabela de Teste (Caixa Branca Estática)
-
-A tabela de teste foi preenchida conforme solicitado na atividade, contendo:
-
-- Validação de documentação  
-- Nomenclatura  
-- NullPointers  
-- Loops  
-- Arquitetura  
-- Tratamento de exceções  
-- Conexões abertas e não fechadas  
-
-> **A imagem da tabela será adicionada por você aqui no repositório.**
+## 5. Tabela de Teste (Caixa Branca Estática)
+<img width="1464" height="791" alt="image" src="https://github.com/user-attachments/assets/b3af31a6-c9a3-46f7-a81e-e3494caea964" />
 
 ---
 
-## 📌 6. Código Fonte
+## 6. Código Fonte
 
-O código original analisado também deve ser incluído no repositório, com comentários e correções realizadas conforme solicitado.
+<img width="678" height="547" alt="image" src="https://github.com/user-attachments/assets/6d0d1cc1-aeb2-4910-bf93-70d50159913c" />
+
 
 ---
 
-## 📌 7. Estrutura Recomendada do Repositório
+## 7. Estrutura Recomendada do Repositório
 
